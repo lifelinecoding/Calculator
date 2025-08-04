@@ -5,17 +5,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const percentage = document.getElementById("percentage");
   const backspace = document.getElementById("backspace");
   const divide = document.getElementById("divide");
-  const one = document.getElementById("one");
-  const two = document.getElementById("two");
-  const three = document.getElementById("three");
-  const four = document.getElementById("four");
-  const five = document.getElementById("five");
-  const six = document.getElementById("six");
-  const seven = document.getElementById("seven");
-  const eight = document.getElementById("eight");
-  const nine = document.getElementById("nine");
-  const zero2 = document.getElementById("zero-2");
-  const zero = document.getElementById("zero");
+  const button = document.body.getElementsByClassName('number')
   const dot = document.getElementById("dot");
   const equal = document.getElementById("equal");
   const addition = document.getElementById("addition");
@@ -41,67 +31,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
   });
 
-  one.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += one.textContent;
-  });
-
-  two.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += two.textContent;
-  });
-
-  three.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += three.textContent;
-  });
-
-  four.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += four.textContent;
-  });
-
-  five.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += five.textContent;
-  });
-
-  six.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += six.textContent;
-  });
-
-  seven.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += seven.textContent;
-  });
-
-  eight.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += eight.textContent;
-  });
-
-  nine.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += nine.textContent;
-  });
-
-  zero2.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += zero2.textContent;
-  });
-
-  zero.addEventListener("click", (event) => {
-    event.preventDefault();
-    display.textContent += zero.textContent;
-  });
+  Array.from(button).forEach(element =>{
+    element.addEventListener('click', (event) =>{
+      event.preventDefault();
+      display.textContent += element.textContent
+    })
+  })
 
   dot.addEventListener("click", (event) => {
     event.preventDefault();
-    display.textContent += dot.textContent;
+    appendOperator(dot.textContent);
   });
 
-  const isOperator = (char) => ["+", "-", "×", "÷", "%"].includes(char);
+  const isOperator = (char) => ["+", "-", "×", "÷", "%", "."].includes(char);
 
   const appendOperator = (operator) => {
     const current = display.textContent.trim();
